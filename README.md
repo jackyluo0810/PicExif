@@ -1,8 +1,12 @@
 # PicExif - Image EXIF & GPS Information Extractor
 
+![GitHub](https://img.shields.io/github/license/jackyluo0810/PicExif)
+![GitHub last commit](https://img.shields.io/github/last-commit/jackyluo0810/PicExif)
+![GitHub stars](https://img.shields.io/github/stars/jackyluo0810/PicExif)
+
 ## Overview
 
-PicExif is a Windows desktop application that extracts and displays GPS location information and other metadata from images.
+PicExif is a Windows desktop application that extracts and displays GPS location information and other metadata from images. It supports drag-and-drop image upload, real-time EXIF data extraction, and map visualization of photo locations.
 
 ### Screenshot
 
@@ -21,7 +25,7 @@ PicExif is a Windows desktop application that extracts and displays GPS location
    - **Basic Info**: File name, file size, file format
    - **EXIF Info**: Creation time, resolution, camera model
    - **GPS Location**: Latitude, longitude, two coordinate formats (lat,lng and lng,lat)
-   - **Map Display**: Built-in AMap (高德地图) showing photo location
+   - **Map Display**: Built-in AMap (Gaode Map) showing photo location
 
 4. **Copy Function**:
    - Each information field has a copy button
@@ -36,7 +40,7 @@ PicExif is a Windows desktop application that extracts and displays GPS location
 
 ### ⭐ No Compilation Needed! Use Directly
 
-If you don't want to compile from source, you can download the pre-built ZIP package from the project's Releases page, extract it, and double-click `PicExif.exe` to use it!
+If you don't want to compile from source, you can download the pre-built ZIP package from the project's [Releases](https://github.com/jackyluo0810/PicExif/releases) page, extract it, and double-click `PicExif.exe` to use it!
 
 ### 1. Configure API Key (Optional)
 
@@ -68,7 +72,7 @@ Or run the compiled executable at `bin\Debug\net6.0-windows\PicExif.exe`
 - Image Metadata Extraction: MetadataExtractor library
 - Image Processing: System.Drawing.Common
 - Configuration: Microsoft.Extensions.Configuration
-- Map Service: AMap API
+- Map Service: AMap (Gaode Map) API
 - UI Design: Modern WPF interface
 
 ## Project Structure
@@ -109,14 +113,14 @@ PicExif/
 dotnet publish -c Release -r win-x64 --self-contained true
 ```
 
-## Notes
+## Contributing
 
-- Only supports common image formats (JPG, PNG, BMP, TIFF, GIF, etc.)
-- GPS location information is only displayed when the image contains GPS data
-- First run may take some time to load dependencies
-- Please keep your API keys safe and do not commit them to public repositories
+Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) for more information.
 
-## Version Info
+## License
 
-- Version: 1.0.0
-- Release Date: 2026-04-27
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Tags
+
+#exif #gps #image-metadata #photo-gps #wpf #csharp #dotnet #windows-desktop #image-processing #metadata-extraction
