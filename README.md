@@ -1,5 +1,7 @@
 # PicExif - Image EXIF & GPS Information Extractor
 
+🇨🇳 [阅读中文版](README_zh-CN.md)
+
 ![GitHub](https://img.shields.io/github/license/jackyluo0810/PicExif)
 ![GitHub last commit](https://img.shields.io/github/last-commit/jackyluo0810/PicExif)
 ![GitHub stars](https://img.shields.io/github/stars/jackyluo0810/PicExif)
