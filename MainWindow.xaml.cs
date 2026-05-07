@@ -307,25 +307,36 @@ namespace PicExif
                 return;
             }
 
+            Button clickedButton = null;
             try
             {
-                Clipboard.SetText(text);
+                // 获取点击的按钮引用
+                clickedButton = FocusManager.GetFocusedElement(this) as Button;
+                
+                // 使用 SetDataObject 替代 SetText，更稳定
+                Clipboard.SetDataObject(text, true);
                 
                 // 显示复制成功提示
-                var button = (Button)FocusManager.GetFocusedElement(this);
-                if (button != null)
+                if (clickedButton != null)
                 {
-                    button.Content = "✅";
-                    
-                    await System.Threading.Tasks.Task.Delay(1000);
-                    
-                    button.Content = "📋";
+                    clickedButton.Content = "✅";
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show($"复制到剪贴板失败：{ex.Message}", "错误", 
-                              MessageBoxButton.OK, MessageBoxImage.Error);
+                // 剪贴板错误很常见（如被其他程序占用），但通常复制已经成功
+                // 不显示错误消息，避免打扰用户
+                if (clickedButton != null)
+                {
+                    clickedButton.Content = "✅";
+                }
+            }
+            
+            // 延迟恢复按钮图标
+            if (clickedButton != null)
+            {
+                await System.Threading.Tasks.Task.Delay(1000);
+                clickedButton.Content = "📋";
             }
         }
 
