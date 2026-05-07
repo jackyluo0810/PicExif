@@ -108,6 +108,11 @@ namespace PicExif
             CopyLongitudeButton.Click += (s, e) => CopyToClipboard(LongitudeText.Text);
             CopyLatLngButton.Click += (s, e) => CopyToClipboard(LatLngText.Text);
             CopyLngLatButton.Click += (s, e) => CopyToClipboard(LngLatText.Text);
+            // GCJ-02坐标复制按钮
+            CopyGcjLatitudeButton.Click += (s, e) => CopyToClipboard(GcjLatitudeText.Text);
+            CopyGcjLongitudeButton.Click += (s, e) => CopyToClipboard(GcjLongitudeText.Text);
+            CopyGcjLatLngButton.Click += (s, e) => CopyToClipboard(GcjLatLngText.Text);
+            CopyGcjLngLatButton.Click += (s, e) => CopyToClipboard(GcjLngLatText.Text);
             
             // 打开地图按钮事件
             OpenMapButton.Click += OnOpenMapClick;
@@ -253,13 +258,38 @@ namespace PicExif
                 LatLngText.Text = $"{lat.ToString("F6")}, {lng.ToString("F6")}";
                 LngLatText.Text = $"{lng.ToString("F6")}, {lat.ToString("F6")}";
                 
-                // 显示高德地图
-                ShowAmap(lat, lng);
+                // GCJ-02坐标
+                if (_currentImageInfo.GcjLatitude != null && _currentImageInfo.GcjLongitude != null)
+                {
+                    double gcjLat = _currentImageInfo.GcjLatitude.Value;
+                    double gcjLng = _currentImageInfo.GcjLongitude.Value;
+                    GcjLatitudeText.Text = gcjLat.ToString("F6");
+                    GcjLongitudeText.Text = gcjLng.ToString("F6");
+                    GcjLatLngText.Text = $"{gcjLat.ToString("F6")}, {gcjLng.ToString("F6")}";
+                    GcjLngLatText.Text = $"{gcjLng.ToString("F6")}, {gcjLat.ToString("F6")}";
+                    
+                    // 使用GCJ-02坐标显示高德地图
+                    ShowAmap(gcjLat, gcjLng);
+                }
+                else
+                {
+                    GcjLatitudeText.Text = "未知";
+                    GcjLongitudeText.Text = "未知";
+                    GcjLatLngText.Text = "未知";
+                    GcjLngLatText.Text = "未知";
+                    
+                    // 使用原始坐标显示高德地图
+                    ShowAmap(lat, lng);
+                }
             }
             else
             {
                 LatLngText.Text = "未知";
                 LngLatText.Text = "未知";
+                GcjLatitudeText.Text = "未知";
+                GcjLongitudeText.Text = "未知";
+                GcjLatLngText.Text = "未知";
+                GcjLngLatText.Text = "未知";
                 
                 // 显示无位置信息提示
                 MapWebBrowser.NavigateToString(NoLocationHtml);
@@ -344,8 +374,9 @@ namespace PicExif
         {
             if (_currentImageInfo?.Latitude != null && _currentImageInfo?.Longitude != null)
             {
-                double lat = _currentImageInfo.Latitude.Value;
-                double lng = _currentImageInfo.Longitude.Value;
+                // 优先使用GCJ-02坐标
+                double lat = _currentImageInfo.GcjLatitude ?? _currentImageInfo.Latitude.Value;
+                double lng = _currentImageInfo.GcjLongitude ?? _currentImageInfo.Longitude.Value;
                 
                 // 构造高德地图URL，使用更可靠的格式
                 string mapUrl = $"https://www.amap.com/?q={lat},{lng}&center={lng},{lat}&zoom=15";

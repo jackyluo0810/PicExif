@@ -11,6 +11,8 @@ namespace PicExif.Services
 {
     public class ExifService
     {
+        private readonly CoordinateConverterService _converter = new CoordinateConverterService();
+
         public ImageInfo ExtractImageInfo(string filePath)
         {
             var imageInfo = new ImageInfo
@@ -44,6 +46,11 @@ namespace PicExif.Services
                 if (imageInfo.Latitude.HasValue && imageInfo.Longitude.HasValue)
                 {
                     imageInfo.Location = $"{imageInfo.Latitude.Value:F6}, {imageInfo.Longitude.Value:F6}";
+                    
+                    // 转换为GCJ-02坐标系
+                    var (gcjLat, gcjLng) = _converter.Wgs84ToGcj02(imageInfo.Latitude.Value, imageInfo.Longitude.Value);
+                    imageInfo.GcjLatitude = gcjLat;
+                    imageInfo.GcjLongitude = gcjLng;
                 }
 
                 ExtractResolutionFromImage(filePath, imageInfo);

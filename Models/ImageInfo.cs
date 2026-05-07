@@ -12,6 +12,8 @@ namespace PicExif.Models
         public string Location { get; set; } = string.Empty;
         public double? Latitude { get; set; }
         public double? Longitude { get; set; }
+        public double? GcjLatitude { get; set; }
+        public double? GcjLongitude { get; set; }
         public string FileSize { get; set; } = string.Empty;
         public string FileFormat { get; set; } = string.Empty;
     }

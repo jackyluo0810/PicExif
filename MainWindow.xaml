@@ -362,6 +362,56 @@
                                 </StackPanel>
                             </Grid>
                             
+                            <TextBlock Text="GCJ-02坐标" Style="{StaticResource SectionTitleStyle}"/>
+                            
+                            <!-- GCJ-02坐标 -->
+                            <Grid Margin="0,8,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="{StaticResource FourColumnFirstLabelWidth}"/>
+                                    <ColumnDefinition Width="{StaticResource FourColumnFirstValueWidth}"/>
+                                    <ColumnDefinition Width="{StaticResource FourColumnSecondLabelWidth}"/>
+                                    <ColumnDefinition Width="{StaticResource FourColumnSecondValueWidth}"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <!-- GCJ-02纬度 -->
+                                <TextBlock Grid.Column="0" Text="GCJ-02纬度：" Style="{StaticResource InfoLabelStyle}" VerticalAlignment="Center"/>
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock Name="GcjLatitudeText" Style="{StaticResource InfoValueStyle}"/>
+                                    <Button Name="CopyGcjLatitudeButton" Style="{StaticResource CopyButtonStyle}" Margin="5,0,0,0"/>
+                                </StackPanel>
+                                
+                                <!-- GCJ-02经度 -->
+                                <TextBlock Grid.Column="2" Text="GCJ-02经度：" Style="{StaticResource InfoLabelStyle}" VerticalAlignment="Center"/>
+                                <StackPanel Grid.Column="3" Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock Name="GcjLongitudeText" Style="{StaticResource InfoValueStyle}"/>
+                                    <Button Name="CopyGcjLongitudeButton" Style="{StaticResource CopyButtonStyle}" Margin="5,0,0,0"/>
+                                </StackPanel>
+                            </Grid>
+                            
+                            <!-- GCJ-02坐标格式 -->
+                            <Grid Margin="0,8,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="{StaticResource FourColumnFirstLabelWidth}"/>
+                                    <ColumnDefinition Width="{StaticResource FourColumnFirstValueWidth}"/>
+                                    <ColumnDefinition Width="{StaticResource FourColumnSecondLabelWidth}"/>
+                                    <ColumnDefinition Width="{StaticResource FourColumnSecondValueWidth}"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <!-- GCJ-02 纬度,经度 -->
+                                <TextBlock Grid.Column="0" Text="GCJ-02(纬度,经度)：" Style="{StaticResource InfoLabelStyle}" VerticalAlignment="Center"/>
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock Name="GcjLatLngText" Style="{StaticResource InfoValueStyle}"/>
+                                    <Button Name="CopyGcjLatLngButton" Style="{StaticResource CopyButtonStyle}" Margin="5,0,0,0"/>
+                                </StackPanel>
+                                
+                                <!-- GCJ-02 经度,纬度 -->
+                                <TextBlock Grid.Column="2" Text="GCJ-02(经度,纬度)：" Style="{StaticResource InfoLabelStyle}" VerticalAlignment="Center"/>
+                                <StackPanel Grid.Column="3" Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock Name="GcjLngLatText" Style="{StaticResource InfoValueStyle}"/>
+                                    <Button Name="CopyGcjLngLatButton" Style="{StaticResource CopyButtonStyle}" Margin="5,0,0,0"/>
+                                </StackPanel>
+                            </Grid>
+                            
                             <!-- 地图显示 -->
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,15,0,8">
                                 <TextBlock Text="地图位置" Style="{StaticResource SectionTitleStyle}" Margin="0,0,10,0"/>
